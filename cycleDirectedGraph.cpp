@@ -8,6 +8,8 @@ public:
     vector<int> v;
     vector<vector<int>> g;
     
+    //1 = recursion stack
+    //2 = visited
     void dfs(int x){
         if(v[x]==1) {cycle=1; return;}
         if(v[x]==2) return;
