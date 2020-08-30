@@ -18,6 +18,13 @@ typedef pair<int,int> pii;
 
 //https://codeforces.com/contest/1354/problem/D
 
+/*
+Least significant bit of i is i&-i
+query is prefix sum till i
+bit array has 1 based indexing
+bit array stores count of occurence of a num at the num-index
+*/
+
 int n,q;
 vector<int> bit;
 
