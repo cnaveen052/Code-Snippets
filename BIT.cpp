@@ -13,8 +13,13 @@ using namespace std;
 #define print(x) for(auto& i:x) cout<<i<<" "; cout<<'\n';
 #define scan(x) for(auto& i:x) cin>>i;
 #define FAST ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
-#define ll long long int
-typedef pair<int,int> pii;
+#define d1(a) cout<<a<<endl;
+#define d2(a,b) cout<<a<<" "<<b<<endl
+#define d3(a,b,c) cout<<a<<" "<<b<<" "<<c<<endl
+#define d4(a,b,c,d) cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl
+#define d5(a,b,c,d,e) cout<<a<<" "<<b<<" "<<c<<" "<<d<<" "<<e<<endl
+#define int long long int
+int mod=1e9+7;
 
 //https://codeforces.com/contest/1354/problem/D
 
@@ -32,8 +37,8 @@ void update(int i, int val){
 	for(;i<=n;i+=i&-i) bit[i]+=val;
 }
 
-ll query(int i){
-	ll sum=0;
+int query(int i){
+	int sum=0;
 	for(;i>0;i-=i&-i) sum+=bit[i];
 	return sum;
 }
@@ -61,7 +66,8 @@ void solve(){
 	if(query(n)==0) cout<<0<<endl;
 	else cout<<find(1)<<endl;
 }
- 
+
+#undef int
 int main() {
 	freopen("test.txt", "r", stdin);
 	FAST; int T=1;
