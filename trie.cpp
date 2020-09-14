@@ -7,13 +7,10 @@ using namespace std;
 //https://leetcode.com/problems/stream-of-characters/
 
 class Trie {
+private:
 	unordered_map<char, Trie *> char_map;
 	bool word_ends;
 public:
-	Trie() {
-		word_ends = false;
-	}
-
 	void insert(string word) {
 		if(word.length() == 0)
 			return;
@@ -48,6 +45,7 @@ public:
 };
 
 class StreamChecker {
+private:
 	Trie my_trie;
 	string str = "";
 	int w_len = 0;
