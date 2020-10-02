@@ -5,6 +5,7 @@
 using namespace std;
 
 //https://leetcode.com/problems/largest-component-size-by-common-factor
+//https://leetcode.com/problems/minimize-malware-spread/
 
 class Solution {
 public:
