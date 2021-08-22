@@ -1,6 +1,7 @@
-//https://leetcode.com/problems/create-sorted-array-through-instructions/
-
 /*
+https://leetcode.com/problems/create-sorted-array-through-instructions/
+https://leetcode.com/problems/range-sum-query-mutable/
+
 Least significant bit of i is i&-i
 get is prefix sum till i
 bit array has 1 based indexing
