@@ -1,3 +1,10 @@
+/*
+For Coin Sum problems use bottom up DP with 2 for loops
+Sum loop outside to get all possible ways to get the sum
+Coin loop outside to get all possible ordered ways to get the sum
+Coin loop outside and inner loop reversed to use a coin once
+*/
+
 #include<iostream>
 #include <vector>
 using namespace std;
