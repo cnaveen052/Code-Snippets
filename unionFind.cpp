@@ -9,15 +9,10 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> parent, rank;
+    vector<int> parent;
     
     void Union(int x, int y){
-        int xroot=find(x), yroot=find(y);
-        if(xroot!=yroot){
-            if(rank[xroot]<rank[yroot]) swap(xroot,yroot);
-            parent[yroot]=xroot;
-            if(rank[xroot]==rank[yroot]) rank[xroot]++;
-        }
+        parent[find(y)]=parent[find(x)];
     }
     
     int find(int x){
@@ -28,7 +23,7 @@ public:
     int largestComponentSize(vector<int>& a) {
         int n=a.size();
         int mx=*max_element(a.begin(),a.end());
-        parent.resize(mx+1); rank.resize(mx+1);
+        parent.resize(mx+1);
         for(int i=0;i<parent.size();i++) parent[i]=i;
         for(auto i:a){
             for(int k=2;k*k<=i;k++){
