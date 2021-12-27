@@ -4,66 +4,59 @@
 #include<algorithm>
 using namespace std;
 
-//https://leetcode.com/problems/stream-of-characters/
+https://leetcode.com/problems/word-search-ii/
 
-class Trie {
+class Solution {
 private:
-	unordered_map<char, Trie *> char_map;
-	bool word_ends;
+    struct Trie{
+        Trie* next[26];
+        bool end = 0;
+    };
+    
+    void insert(string word){
+        Trie *r=root;
+        for(auto ch : word){
+            if(r->next[ch-'a']==NULL)
+                r->next[ch-'a'] = new Trie();
+            r = r->next[ch-'a'];
+        }
+        r->end = 1;
+    }
+    
+    Trie *root;
+    unordered_set<string> ans;
+    vector<vector<char>> board;
+    int row, col, dir=4;
+    int dx[4] = {-1, 0, 1, 0};
+    int dy[4] = {0, -1, 0, 1};
+    
+    void search(int x, int y, string word, Trie *r){
+        if(r->next[board[x][y]-'a'] == NULL)
+            return;
+        r = r->next[board[x][y]-'a'];
+        word += board[x][y];
+        if(r->end == 1)
+            ans.insert(word);
+        char temp = board[x][y];
+        board[x][y]='*';
+        for(int i=0; i<dir; i++){
+            int nx = x + dx[i], ny = y + dy[i];
+            if(nx<0 or ny<0 or nx>=row or ny>=col or board[nx][ny]=='*') continue;
+            search(nx, ny, word, r);
+        }
+        board[x][y]=temp;
+    }
+    
 public:
-	void insert(string word) {
-		if(word.length() == 0)
-			return;
-
-		Trie *temp = this;
-		for(auto ch : word) {
-			if(temp->char_map.find(ch) != temp->char_map.end()) {
-				temp = temp->char_map[ch];
-			} else {
-				temp->char_map[ch] = new Trie();
-				temp = temp->char_map[ch];
-			}
-		}
-
-		temp->word_ends = true;
-	}
-
-	bool search(string word) {
-		if(word.length() == 0)
-			return false;
-
-		Trie *temp = this;
-		for(auto ch : word) {
-			if(temp->char_map.find(ch) == temp->char_map.end())
-				return false;
-			temp = temp->char_map[ch];
-			if(temp->word_ends)
-				return true;
-		}
-		return temp->word_ends;
-	}
-};
-
-class StreamChecker {
-private:
-	Trie my_trie;
-	string str = "";
-	int w_len = 0;
-public:
-	StreamChecker(vector<string>& words) {
-		for(auto w : words) {
-			reverse(w.begin(), w.end());
-			w_len = max(w_len, (int)w.length());
-			my_trie.insert(w);
-		}
-	}
-
-	bool query(char letter) {
-		str = letter + str;
-
-		if(str.length() > w_len)
-			str.pop_back();
-
-		return my_trie.search(str);
-	}
+    vector<string> findWords(vector<vector<char>>& Board, vector<string>& words) {
+        board = Board;
+        root = new Trie();
+        row = board.size(), col = board[0].size();
+        for(auto word : words)
+            insert(word);
+        for(int i=0; i<row; i++)
+            for(int j=0; j<col; j++)
+                search(i, j, "", root);
+        return vector<string>(ans.begin(), ans.end());
+    }
 };
