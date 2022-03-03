@@ -20,7 +20,7 @@ public:
         }
         /*
         one liner without rank:-
-        parent[find(y)]=parent[find(x)];
+        parent[find(y)]=find(x);
         */
     }
     
