@@ -32,6 +32,7 @@ public:
     
     //Copy assignment
     SharedPtr& operator=(const SharedPtr& obj){
+        if(data == obj.data) return *this;
         cleanup();
         data = obj.data;
         cnt = obj.cnt;
@@ -48,6 +49,7 @@ public:
     
     //Move assignment
     SharedPtr& operator=(SharedPtr&& obj){
+        if(data == obj.data) return *this;
         cleanup();
         data = obj.data;
         cnt = obj.cnt;
