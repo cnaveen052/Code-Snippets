@@ -32,6 +32,13 @@ public:
     }
 };
 
+class FlyRocketPowered : public FlyBehavior{
+public:
+    void fly(){
+        cout<<"flying with rocket boosters!"<<endl;
+    }
+};
+
 //Interface
 class QuackBehavior{
 public:
@@ -67,6 +74,12 @@ protected:
     QuackBehavior* quackbehavior;
 public:
     virtual void display() = 0;
+    void setFlyBehavior(FlyBehavior* fb){
+        flyBehavior = fb;
+    }
+    void setQuackBehavior(QuackBehavior* qb){
+        quackbehavior = qb;
+    }
     void performFly(){
         flyBehavior->fly();
     }
@@ -89,10 +102,26 @@ public:
         cout<<"Looks like Mallard duck"<<endl;
     }
 };
+
+class ModelDuck : public Duck{
+public:
+    ModelDuck(){
+        flyBehavior = new FlyNoWay();
+        quackbehavior = new Quack();
+    }
+    void display(){
+        cout<<"Looks like Model duck"<<endl;
+    }
+};
  
 #undef int
 int main() {
     Duck* mallard = new MallardDuck();
     mallard->display();
     mallard->performFly();
+    
+    Duck* model = new ModelDuck();
+    model->performFly();
+    model->setFlyBehavior(new FlyRocketPowered());
+    model->performFly();
 }
