@@ -1,10 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define FAST ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
-#define print(...) for(auto& i:__VA_ARGS__) cout<<i<<" "; cout<<'\n';
-#define read(...) for(auto& i:__VA_ARGS__) cin>>i;
-#define int long long
-const int mod=1e9+7;
 
 /*
 Chapter 1: Intro to design patterns
