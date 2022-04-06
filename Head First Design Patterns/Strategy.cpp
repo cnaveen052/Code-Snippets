@@ -8,7 +8,7 @@ const int mod=1e9+7;
 
 /*
 Chapter 1: Intro to design patterns
-Behavioral Design Pattern
+Strategy Design Pattern
 */
 
 //Interface
@@ -109,6 +109,7 @@ public:
         flyBehavior = new FlyNoWay();
         quackbehavior = new Quack();
     }
+    
     void display(){
         cout<<"Looks like Model duck"<<endl;
     }
