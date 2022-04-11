@@ -109,8 +109,7 @@ public:
         cout<<"Looks like Model duck"<<endl;
     }
 };
- 
-#undef int
+
 int main() {
     Duck* mallard = new MallardDuck();
     mallard->display();
