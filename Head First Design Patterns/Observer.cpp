@@ -93,7 +93,6 @@ public:
     }
 };
 
-#undef int
 int main() {
     WeatherData* weatherData = new WeatherData();
     CurrentConditionDisplay* currentConditions = new CurrentConditionDisplay(weatherData);
