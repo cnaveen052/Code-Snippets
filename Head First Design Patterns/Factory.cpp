@@ -3,6 +3,9 @@ using namespace std;
 
 /*
 Chapter 3: Factory Design Pattern
+
+createPizza is the abstract factory method
+encapsulating the creation of concrete Pizzas
 */
 
 class Pizza{
