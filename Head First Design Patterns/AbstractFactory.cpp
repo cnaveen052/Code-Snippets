@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-Chapter 3: Abstract Factory Design Pattern
+Chapter 4: Abstract Factory Design Pattern
 */
 
 class Dough{
