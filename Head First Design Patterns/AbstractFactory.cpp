@@ -82,8 +82,6 @@ public:
 class Pizza{
 protected:
     string name;
-    
-    
     Dough* dough;
     Clams* clams;
 public:
